@@ -9,9 +9,11 @@ from pygame import Rect, Surface
 from pygame.font import Font
 
 from code.Const import WIN_HEIGHT
+from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactoring import EntityFactory
 from code.EntityMediator import EntityMediator
+from code.Player import Player
 
 
 class Level:
@@ -37,6 +39,10 @@ class Level:
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
+                if isinstance(ent, (Player, Enemy)):
+                    shoot = ent.shoot()
+                    if shoot is not None:
+                        self.entity_list.append(shoot)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
