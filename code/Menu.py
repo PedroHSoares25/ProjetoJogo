@@ -2,7 +2,7 @@
 import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.Const import WIN_WIDTH, WIN_HEIGHT, C_BLUEF, MENU_OPTION, C_BLUE, C_WHITE
+from code.Const import WIN_WIDTH, WIN_HEIGHT, C_BLUEF, MENU_OPTION, C_BLUE, C_WHITE, C_BLACK, C_ORANGE
 
 
 class Menu:
@@ -11,19 +11,19 @@ class Menu:
         self.surf = pygame.image.load('./asset/backgroundmenu.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
-    def run(self, ):
+    def run(self):
         menu_option = 0
-        pygame.mixer_music.load('./asset/soundprinc.wav')
+        pygame.mixer_music.load('./asset/soundprinc.mp3')
         pygame.mixer_music.play(-1)
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, text="Get Way!", text_color= C_BLUEF, text_center_pos= ((WIN_WIDTH / 2), 70))
+            self.menu_text(50, text="GUNSHOT!", text_color= C_BLACK, text_center_pos= ((WIN_WIDTH / 2), 70))
 
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_text(30, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
+                    self.menu_text(30, MENU_OPTION[i], C_ORANGE, ((WIN_WIDTH / 2), 200 + 25 * i))
                 else:
-                    self.menu_text(30, MENU_OPTION[i], C_BLUE, ((WIN_WIDTH / 2), 200 + 25 * i))
+                    self.menu_text(30, MENU_OPTION[i], C_BLACK, ((WIN_WIDTH / 2), 200 + 25 * i))
             pygame.display.flip()
 
 

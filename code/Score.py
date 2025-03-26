@@ -5,7 +5,7 @@ import pygame
 from pygame import Surface, Rect, KEYDOWN, K_RETURN, K_BACKSPACE, K_ESCAPE
 from pygame.font import Font
 
-from code.Const import C_GREEN, SCORE_POS, MENU_OPTION, C_WHITE
+from code.Const import C_GREEN, SCORE_POS, MENU_OPTION, C_WHITE, C_BLACK
 from code.DBProxy import DBProxy
 
 
@@ -36,7 +36,7 @@ class Score:
                 else:
                     score = player_score[1]
                     text = 'Enter Player 2 name (4 characters):'
-            self.score_text(20, text, C_WHITE, SCORE_POS['EnterName'])
+            self.score_text(20, text, C_BLACK, SCORE_POS['EnterName'])
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -68,7 +68,7 @@ class Score:
 
         for player_score in list_score:
             id_, name, score, date = player_score
-            self.score_text(20, f'{name}     {score:05d}     {date}', C_GREEN,
+            self.score_text(20, f'{name}     {score}     {date}', C_GREEN,
                             SCORE_POS[list_score.index(player_score)])
         while True:
             for event in pygame.event.get():
